@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="900" viewBox="0 0 1100 900" fill="none">
+  <!-- Fine sculptural contours echo a jewelry setting. -->
+  <g stroke="#a68b51" stroke-opacity=".22" stroke-width=".8">
+    <ellipse cx="938" cy="548" rx="295" ry="391" transform="rotate(-28 938 548)"/>
+    <ellipse cx="938" cy="548" rx="275" ry="366" transform="rotate(-28 938 548)"/>
+    <ellipse cx="938" cy="548" rx="254" ry="342" transform="rotate(-28 938 548)"/>
+    <path d="M-160 333C40 372 159 247 143 76S195-126 352-146"/>
+    <path d="M-170 315C29 355 140 247 124 79S183-143 346-165"/>
+    <path d="M-178 297C20 337 122 247 106 83S173-161 340-183"/>
+  </g>
+</svg>
