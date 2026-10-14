@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eeeae2">
+  <meta name="description" content="Lothric — искусство в прикосновении. Ювелирные украшения и фирменная бижутерия. Демонстрационный сайт бренда.">
+  <title>Lothric — Искусство в прикосновении</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/CormorantGaramond-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="refinements.css">
+  <link rel="stylesheet" href="antique.css">
+  <link rel="stylesheet" href="sections.css">
+  <script src="carousel.js" defer></script>
+  <script src="app.js" defer></script>
+  <script src="smooth-scroll.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#catalog">Перейти к коллекции</a>
+  <!-- Header follows the reference: wordmark, navigation, phone, utility icons. -->
+  <header class="header" id="header">
+    <a class="brand" href="#home" aria-label="Lothric — на главную"><span class="wordmark" role="img" aria-label="Lothric"></span></a>
+    <nav class="desktop-nav" aria-label="Основная навигация"><a href="#catalog">Каталог</a><a href="#about">О нас</a><a href="#reviews">Отзывы</a></nav>
+    <button class="header-phone" data-panel="contacts">+1 444 555 9999</button>
+    <div class="header-actions">
+      <button class="icon-button" data-panel="search" aria-label="Поиск"><svg><use href="#i-search"/></svg></button>
+      <button class="icon-button" data-panel="cart" aria-label="Корзина"><svg><use href="#i-bag"/></svg><span class="badge" id="cart-count" hidden>0</span></button>
+    </div>
+  </header>
+  <main>
+    <!-- 1. A 100vh frame stays pinned while the scroll controls video currentTime. -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero-stage">
+        <video id="hero-video" muted playsinline preload="none" aria-label="Украшения Lothric: прикосновение искусства"></video>
+        <div class="hero-copy" id="hero-copy"><h1 id="hero-title">Искусство в <em>прикосновении</em></h1><a class="button button-dark hero-mobile-action" href="#catalog">Смотреть коллекцию <span aria-hidden="true">↗</span></a></div>
+        <div class="hero-progress" aria-hidden="true"><span id="hero-progress"></span></div>
+        <button class="video-fallback" id="video-fallback" hidden>Нажмите, чтобы загрузить видео</button>
+      </div>
+    </section>
+    <!-- 2. Product data and filtering are defined in app.js. -->
+    <section class="catalog section-pad" id="catalog" aria-labelledby="catalog-title">
+      <div class="section-heading"><h2 id="catalog-title">Коллекция</h2></div>
+      <div class="catalog-toolbar"><div class="filters" role="group" aria-label="Категории украшений"><button class="filter active" data-filter="all" aria-pressed="true">Все украшения</button><button class="filter" data-filter="signature" aria-pressed="false">Lothric Signature</button><button class="filter" data-filter="rings" aria-pressed="false">Кольца</button><button class="filter" data-filter="necklaces" aria-pressed="false">Колье</button></div></div>
+      <div class="product-carousel" id="product-grid" role="region" aria-roledescription="карусель" aria-label="Коллекция украшений" tabindex="0"></div>
+      <div class="carousel-details"><button class="circle-button" id="product-prev" aria-label="Предыдущее украшение">←</button><div id="selected-product" aria-live="polite"></div><button class="circle-button" id="product-next" aria-label="Следующее украшение">→</button></div>
+    </section>
+    <!-- 3. Brand story, explicitly presented as a demonstration concept. -->
+    <section class="about brand-story section-pad" id="about" aria-labelledby="about-title">
+      <div class="brand-story-heading"><p class="eyebrow">О нас</p><h2 id="about-title">Красота<br>в <em>деталях.</em></h2><div class="brand-history"><strong>100</strong><span>лет работы<br>ювелирного дома</span></div></div>
+      <div class="brand-story-copy"><p class="brand-story-lead">Классическое искусство.<br>Современный ювелирный дизайн.</p><p>Lothric работает уже 100 лет, объединяя ювелирную коллекцию и фирменную бижутерию. Плавные линии, благородные оттенки и выразительные камни определяют характер наших украшений.</p><p>В линии Signature фирменная надпись и монограмма L становятся самостоятельными украшениями — подвеской и серьгами, которые можно носить каждый день.</p><a class="story-link" href="#catalog" data-category-link="signature">Знакомство с коллекцией <span aria-hidden="true">↗</span></a></div>
+    </section>
+    <!-- 4. Five demonstration reviews and a selected central Moscow location. -->
+    <section class="reviews section-pad" id="reviews" aria-labelledby="reviews-title">
+      <div class="review-heading"><h2 id="reviews-title">Отзывы о <em>Lothric.</em></h2><span class="demo-note">Демонстрационные отзывы</span></div>
+      <div class="community-layout">
+        <div class="community-sidebar">
+          <div class="review-summary" aria-label="Сводка отзывов">
+            <div class="review-stat"><span class="review-stat-label">Количество отзывов</span><strong id="review-count">1000+</strong><span class="review-stat-detail">отзывов о наших украшениях</span></div>
+            <div class="review-stat"><span class="review-stat-label">Средняя оценка</span><strong id="review-average">4.9</strong><span class="rating-stars" role="img" aria-label="4,9 из 5"><span aria-hidden="true">★★★★★</span><span class="rating-stars-fill" style="width:98%" aria-hidden="true">★★★★★</span></span></div>
+          </div>
+          <figure class="location-card">
+            <div class="location-heading"><span class="eyebrow">Москва · центр</span><span class="location-coordinates">55.7540° N / 37.6204° E</span></div>
+            <iframe class="location-map" title="Google Maps: Москва, Красная площадь" src="https://www.google.com/maps?q=55.7540%2C37.6204&amp;z=16&amp;hl=ru&amp;output=embed" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <figcaption><div><p class="location-address">Москва, Красная площадь</p><p class="location-note">Выбранная локация</p></div><a class="location-link" href="https://www.google.com/maps/search/?api=1&amp;query=55.7540%2C37.6204" target="_blank" rel="noopener noreferrer" aria-label="Открыть Красную площадь в Google Maps в новой вкладке">Google Maps <span aria-hidden="true">↗</span></a></figcaption>
+          </figure>
+        </div>
+        <ol class="customer-reviews" id="review-list" aria-label="Отзывы с именами авторов"></ol>
+      </div>
+    </section>
+
+    <!-- Contact form is a standalone section above the footer. -->
+    <section class="contact-section section-pad" id="contacts" aria-labelledby="contact-title">
+      <div class="contact-heading"><h2 id="contact-title">Свяжитесь <em>с нами.</em></h2><p>Расскажите, какое украшение вы ищете, или задайте свой вопрос.</p></div>
+      <form id="contact-form" class="contact-form">
+        <div class="contact-fields"><label for="contact-name">Ваше имя<input id="contact-name" name="name" autocomplete="name" type="text" required maxlength="80" placeholder="Имя"></label><label for="contact-email">Ваш e-mail<input id="contact-email" name="email" autocomplete="email" type="email" required maxlength="254" placeholder="name@example.com"></label></div>
+        <label for="contact-message">Ваше сообщение<textarea id="contact-message" name="message" rows="5" required maxlength="3000" placeholder="Что вы хотели бы нам написать?"></textarea></label>
+        <button class="button button-dark" type="submit">Отправить сообщение <span aria-hidden="true">↗</span></button>
+        <p class="contact-status" id="contact-status" role="status">Демонстрационная форма. Отправка пока не подключена.</p>
+      </form>
+    </section>
+  </main>
+  <!-- Footer: oversized original wordmark and navigation. -->
+  <footer class="footer section-pad" id="site-footer">
+    <div class="footer-main"><a class="footer-brand" href="#home" aria-label="Lothric — на главную"><span class="wordmark" role="img" aria-label="Lothric"></span></a><div class="footer-links"><div><p class="eyebrow">Коллекция</p><a href="#catalog">Все украшения</a><a href="#catalog" data-category-link="signature">Lothric Signature</a><a href="#catalog" data-category-link="rings">Кольца</a></div><div><p class="eyebrow">Ювелирный дом</p><a href="#contacts">Связаться</a><a href="#reviews">Отзывы</a><button data-panel="care">Уход за украшениями</button></div><div><p class="eyebrow">Контакты</p><button data-panel="contacts">+1 444 555 9999</button><button data-panel="contacts">hello@lothric.example</button></div><div><p class="eyebrow">Следите за историями</p><button data-panel="social" data-social="Telegram">Telegram ↗</button><button data-panel="social" data-social="Pinterest">Pinterest ↗</button><button data-panel="social" data-social="VK">VK ↗</button></div></div>
+    </div>
+    <div class="footer-bottom"><span>© <span id="year">2026</span> Lothric</span><button data-panel="privacy">Конфиденциальность</button><span>Демонстрационный сайт · концепты и цены</span><a href="#home">Наверх ↑</a></div>
+    <p class="footer-credit">made by Lothric</p>
+  </footer>
+  <dialog id="panel" class="panel"><div class="panel-heading"><p class="eyebrow">LOTHRIC</p><button class="icon-button" id="close-panel" aria-label="Закрыть окно"><svg><use href="#i-close"/></svg></button></div><div id="panel-content"></div></dialog>
+  <div class="toast" id="toast" role="status"></div>
+  <svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol><symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 7h14l1 14H4L5 7Z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></symbol><symbol id="i-close" viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19"/></symbol></svg>
+</body>
+</html>

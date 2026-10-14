@@ -1,0 +1,303 @@
+/* Compact reference header: artwork, wordmark, three links, phone, search, bag. */
+:root { --header: 54px; }
+.header,
+.header.scrolled {
+  height: var(--header);
+  padding: 0 22px;
+  gap: 28px;
+  background: #22221e20;
+  border-bottom: 2px solid #181818;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.header::before {
+  background: linear-gradient(90deg, #f7f5eef2 0%, #f7f5eead 15%, transparent 43%),
+    url('assets/lucifer.jpg') center 47% / cover;
+  opacity: 1;
+}
+.header .wordmark {
+  width: 104px;
+  height: 44px;
+  background-size: 137px 76px;
+}
+.desktop-nav { display: flex; gap: 30px; }
+.desktop-nav a,
+.header-phone {
+  display: block;
+  color: #fff;
+  font-family: var(--serif);
+  font-size: 27px;
+  line-height: 1;
+  padding: 0;
+  white-space: nowrap;
+  text-shadow: 0 1px 3px #000, 0 0 2px #000;
+}
+.header-actions { gap: 4px; color: white; }
+.header-actions .icon-button { filter: drop-shadow(0 1px 2px #000); }
+.header .brand { margin-right: auto; }
+
+.hero-copy {
+  left: 24px;
+  right: 24px;
+  bottom: 45px;
+  text-align: center;
+}
+.hero-copy h1 {
+  font-size: clamp(30px, 3.5vw, 52px);
+  line-height: 1.12;
+  letter-spacing: -1px;
+}
+.hero-copy .button { margin-top: 22px; }
+.hero-mobile-action { display: none; }
+.hero-progress { display: none; }
+
+/* Images form the carousel; product information exists only below its center. */
+.catalog { padding-left: 0; padding-right: 0; }
+.catalog .section-heading { display: block; text-align: center; padding: 0 24px; }
+.catalog .section-heading h2 { margin: 0; }
+.catalog-toolbar { justify-content: center; border: 0; margin: 25px 24px 28px; }
+.filters { gap: 26px; }
+.product-carousel {
+  --slide-width: min(74vw, 440px);
+  position: relative;
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 18px calc((100% - var(--slide-width)) / 2);
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+  touch-action: pan-x pan-y;
+  cursor: grab;
+}
+.product-carousel::-webkit-scrollbar { display: none; }
+.carousel-slide {
+  flex: 0 0 var(--slide-width);
+  min-width: 0;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  opacity: .55;
+  transform: scale(.85);
+  transition: transform .45s ease, opacity .45s ease;
+}
+.carousel-slide.is-selected { opacity: 1; transform: scale(1); }
+.carousel-image {
+  display: block;
+  padding: 0;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: #ece6da;
+  cursor: inherit;
+}
+.carousel-image img { user-select: none; -webkit-user-drag: none; }
+.product-carousel.is-dragging { scroll-snap-type: none; cursor: grabbing; }
+.product-carousel.is-animating { scroll-snap-type: none; scroll-behavior: auto; }
+.product-carousel.is-recentering { scroll-snap-type: none; scroll-behavior: auto; }
+@media (pointer: fine) {
+  /* Programmatic dragging and buttons work; horizontal wheel gestures do not. */
+  .product-carousel { overflow-x: hidden; scroll-snap-type: none; scroll-behavior: auto; }
+}
+.carousel-details {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 440px) 42px;
+  justify-content: center;
+  align-items: start;
+  gap: 22px;
+  margin: 18px 24px 0;
+}
+.carousel-details > .circle-button { margin-top: 12px; }
+.circle-button:disabled { opacity: .25; cursor: default; }
+.circle-button:disabled:hover { background: transparent; color: inherit; }
+#selected-product { text-align: center; min-height: 190px; }
+#selected-product h3 { font-size: clamp(30px, 3vw, 42px); line-height: 1.15; }
+.selected-material { color: var(--muted); font-size: 12px; margin-top: 10px; }
+.selected-price { font-size: 14px; margin-top: 16px; }
+#selected-product .button { margin-top: 20px; gap: 45px; min-width: 170px; }
+.about-copy h2 { margin-top: 0; }
+
+@media (min-width: 900px) {
+  .header,
+  .header.scrolled {
+    background: #f5f1e8ed;
+    border-bottom: 1px solid #bda978;
+    box-shadow: 0 4px 24px #39301b0a;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+  .header::before { background: none; }
+  .desktop-nav a,
+  .header-phone { color: #322e25; text-shadow: none; }
+  .header-actions { color: #514631; }
+  .header-actions .icon-button { filter: none; }
+  .product-carousel { --slide-width: min(36vw, 440px); gap: 50px; }
+}
+@media (max-width: 899px) {
+  :root { --header: 86px; }
+  .header, .header.scrolled {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: 48px 36px;
+    padding: 0 14px;
+    gap: 0 12px;
+  }
+  .header::before {
+    background: linear-gradient(90deg, #f7f5eef0 0%, transparent 55%),
+      url('assets/lucifer.jpg') center 47% / cover;
+  }
+  .header .brand { grid-column: 1; grid-row: 1; }
+  .header .wordmark { width: 94px; height: 42px; background-size: 124px 69px; }
+  .header-phone { grid-column: 2; grid-row: 1; justify-self: end; font-size: 19px; }
+  .header-actions { grid-column: 3; grid-row: 1; gap: 0; }
+  .header-actions .icon-button { width: 31px; height: 40px; }
+  .header-actions svg { width: 18px; height: 18px; }
+  .desktop-nav { grid-column: 1 / -1; grid-row: 2; justify-content: center; gap: 36px; }
+  .desktop-nav a { font-size: 22px; }
+  .hero-copy { left: 20px; right: 20px; bottom: 50px; }
+  .hero video { object-fit: contain; object-position: center 35%; }
+  .hero-copy h1 { max-width: 360px; margin: 0 auto; }
+  .hero-copy .button { margin-top: 20px; }
+}
+@media (max-width: 420px) {
+  .header, .header.scrolled { padding: 0 10px; gap: 0 7px; }
+  .header-phone { font-size: 17px; }
+  .carousel-details { gap: 12px; margin-left: 16px; margin-right: 16px; }
+  .filters { gap: 18px; }
+  .filter { font-size: 10px; }
+}
+
+/* Solid ivory surfaces. */
+.catalog { background: #f5f1e7; }
+.about { background: #eee8dc; }
+.reviews { background: #f8f5ed; }
+.footer { background: #ede6d8; color: var(--ink); }
+.footer::before, .footer::after, .about-copy::before { content: none; }
+.footer .eyebrow, .footer .demo-note, .footer-bottom { color: #777064; }
+.footer-links, .footer-bottom { border-color: #cec4b1; }
+.footer a:hover, .footer button:hover { color: var(--gold); }
+.footer-credit {
+  margin-top: 25px;
+  text-align: right;
+  color: #b1a282;
+  font-size: 10px;
+  letter-spacing: .8px;
+  line-height: 1.5;
+}
+
+/* Mobile layout uses one static viewport with a centered headline and catalog link. */
+@media (max-width: 899px) {
+  .hero { height: 100vh; height: 100svh; }
+  .hero video { display: none; }
+  .hero-stage {
+    background: #f5f1e7;
+  }
+  .hero-copy {
+    top: var(--header);
+    bottom: 0;
+    left: 24px;
+    right: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: none;
+  }
+  .hero-copy h1 {
+    max-width: 340px;
+    font-size: clamp(36px, 10.5vw, 52px);
+    line-height: 1.12;
+  }
+  .hero-copy .hero-mobile-action { display: inline-flex; margin-top: 30px; }
+  .video-fallback { display: none; }
+}
+
+.footer-contact h2 { font-size: clamp(42px, 4vw, 56px); margin-bottom: 24px; }
+.footer-contact p { color: var(--muted); font-size: 12px; line-height: 1.7; }
+.footer-contact .contact-details { display: grid; gap: 14px; margin-top: 22px; }
+.footer-contact .contact-details button { text-align: left; padding: 0; width: fit-content; font-size: 15px; }
+.footer-contact .button { margin-top: 26px; }
+.footer .button-dark:hover { background: #4b4436; color: #f8f5ed; }
+.footer-credit { color: #8c7955; }
+
+/* Transparent over the entire hero; a warmer ivory surface below it. */
+.header {
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.header.scrolled {
+  background: #e7dfd0;
+  border-bottom: 1px solid #cfc4af;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.header::before { content: none; background: none; }
+.desktop-nav a, .header-phone {
+  color: var(--ink);
+  text-shadow: 0 1px 3px #fffaf0a6;
+}
+.header-actions { color: var(--ink); }
+.header-actions .icon-button { filter: drop-shadow(0 1px 2px #fffaf0a6); }
+.wordmark { background-image: url('assets/logo-cutout.png'); }
+.header .brand { background: transparent; }
+.header .wordmark { filter: drop-shadow(0 1px 1px #22282080); }
+
+/* A distinct contact section, outside the footer. */
+.contact-section {
+  display: grid;
+  gap: 42px;
+  background: #f5f1e7;
+  border-top: 1px solid #d8d0c1;
+}
+.contact-heading h2 { font-size: clamp(46px, 5vw, 72px); line-height: 1.05; }
+.contact-heading p { max-width: 340px; margin-top: 22px; color: var(--muted); line-height: 1.8; font-size: 13px; }
+.contact-form { display: grid; gap: 25px; }
+.contact-fields { display: grid; gap: 25px; }
+.contact-form label { display: grid; gap: 12px; font-size: 12px; }
+.contact-form input, .contact-form textarea {
+  width: 100%;
+  padding: 15px 0;
+  border: 0;
+  border-bottom: 1px solid #bfb39d;
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  line-height: 1.6;
+}
+.contact-form textarea { min-height: 145px; resize: vertical; }
+.contact-form .button { justify-self: start; min-width: 225px; }
+.contact-status { min-height: 20px; color: var(--muted); font-size: 11px; line-height: 1.7; }
+
+/* A compact logo takes one quarter of the footer's content width. */
+.footer { padding-top: 44px; }
+.footer-main { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; }
+.footer-brand { display: flex; align-items: center; width: 25%; min-width: 0; }
+.footer-brand .wordmark {
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  aspect-ratio: 2.57;
+  min-height: 0;
+  background-size: 135% auto;
+}
+.footer-main .footer-links {
+  grid-template-columns: 1fr 1fr;
+  align-content: center;
+  border-top: 0;
+  padding: 0 0 30px;
+}
+.footer-bottom { margin-top: 30px; }
+@media (min-width: 700px) {
+  .contact-fields { grid-template-columns: 1fr 1fr; gap: 28px; }
+}
+@media (min-width: 1100px) {
+  .contact-section { grid-template-columns: 1fr 1.1fr; gap: 100px; }
+  .footer-main { grid-template-columns: 25% minmax(0, 1fr); gap: 48px; }
+  .footer-brand { width: 100%; }
+  .footer-main .footer-links { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; padding: 15px 0; }
+}
